@@ -3,13 +3,14 @@
 Summary: Abiquo SOSReport plugins
 Name: abiquo-sosreport-plugins
 Version: 1.1
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: BSD 
 Group: System Environment/Base
 URL: http://packages.abiquolabs.com/
 Packager: Sergio Rubio <srubio@abiquo.com>
 Vendor: Abiquo Repository, http://www.abiquo.com
 Requires: sos 
+BuildArch: noarch
 
 Source0: abiquo_kvm_node.py
 Source1: abiquo_xen_node.py
@@ -34,6 +35,9 @@ mkdir -p %{buildroot}%{python_sitelib}/sos/plugins
 %{python_sitelib}/sos/plugins/*
 
 %changelog
+* Tue Feb 22 2011 Sergio Rubio <srubio@abiquo.com> - 1.1-3
+- set buildarch to noarch
+
 * Tue Feb 22 2011 Sergio Rubio <srubio@abiquo.com> - 1.1-2
 - added dist tag to Release
 
