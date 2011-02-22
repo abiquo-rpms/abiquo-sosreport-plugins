@@ -19,7 +19,7 @@ class abiquo_kvm_node(sos.plugintools.PluginBase):
     """Abiquo kvm node related information
     """
     def checkenabled(self):
-       if self.cInfo["policy"].pkgByName("openwsman") and self.cInfo["policy"].pkgByName("kmod-kvm") and self.cInfo["policy"].pkgByName("abiquo-rimp"):
+       if self.cInfo["policy"].pkgByName("abiquo-aim") and self.cInfo["policy"].pkgByName("kmod-kvm"):
           return True
        return False
 
@@ -28,11 +28,12 @@ class abiquo_kvm_node(sos.plugintools.PluginBase):
         self.addCopySpec("/var/log/libvirt/")
         
         #openwsmand conf
-        self.addCopySpec("/etc/openwsman/")
+        self.addCopySpec("/etc/abiquo-aim.ini")
 
         #Libvirt conf
         self.addCopySpec("/etc/libvirt/")
         
         self.collectExtOutput("virsh capabilities")
+        self.collectExtOutput("virsh list --all")
 
         return

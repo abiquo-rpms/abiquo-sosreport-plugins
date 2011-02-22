@@ -21,28 +21,17 @@ class abiquo_server(sos.plugintools.PluginBase):
     """Abiquo server related information
     """
     def checkenabled(self):
-       if self.cInfo["policy"].pkgByName("abiquo-server") or os.path.exists("/opt/abiquo/tomcat/webapps/server"):
+       if self.cInfo["policy"].pkgByName("abiquo-core") or os.path.exists("/opt/abiquo/tomcat/webapps/"):
           return True
        return False
 
     def setup(self):
         # tomcat log
-        self.addCopySpec("/opt/abiquo/tomcat/logs/catalina.out")
-        self.addCopySpec("/opt/abiquo/tomcat/logs/vsm.log")
-        self.addCopySpec("/opt/abiquo/tomcat/logs/ssm.log")
-        self.addCopySpec("/opt/abiquo/tomcat/logs/server.log")
-        self.addCopySpec("/opt/abiquo/tomcat/logs/virtualfactory.log")
-        self.addCopySpec("/opt/abiquo/tomcat/logs/am.log")
-        self.addCopySpec("/opt/abiquo/tomcat/logs/nodecollector.log")
+        self.addCopySpec("/opt/abiquo/tomcat/logs/")
 
-        self.addCopySpec("/opt/abiquo/config/")
 
         #conf files
-        self.addCopySpec("/opt/abiquo/tomcat/webapps/am/WEB-INF/classes/conf/config.xml")
-        self.addCopySpec("/opt/abiquo/tomcat/webapps/server/WEB-INF/classes/conf/config.xml")
-        self.addCopySpec("/opt/abiquo/tomcat/webapps/virtualfactory/WEB-INF/classes/conf/config.xml")
-        self.addCopySpec("/opt/abiquo/tomcat/webapps/vsm/WEB-INF/classes/conf/config.xml")
-        self.addCopySpec("/opt/abiquo/tomcat/webapps/nodecollector/WEB-INF/classes/conf/config.xml")
+        self.addCopySpec("/opt/abiquo/config/")
         self.addCopySpec("/opt/abiquo/tomcat/conf/")
 
         #MySQL dump

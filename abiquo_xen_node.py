@@ -19,7 +19,7 @@ class abiquo_xen_node(sos.plugintools.PluginBase):
     """Abiquo xen node related information
     """
     def checkenabled(self):
-       if self.cInfo["policy"].pkgByName("openwsman") and self.cInfo["policy"].pkgByName("abiquo-xen") and self.cInfo["policy"].pkgByName("abiquo-rimp"):
+       if self.cInfo["policy"].pkgByName("abiquo-aim") and self.cInfo["policy"].pkgByName("xen"):
           return True
        return False
 
@@ -28,7 +28,7 @@ class abiquo_xen_node(sos.plugintools.PluginBase):
         self.addCopySpec("/var/log/xen/")
         
         #openwsmand conf
-        self.addCopySpec("/etc/openwsman/")
+        self.addCopySpec("/etc/abiquo-aim.ini")
 
         #Libvirt conf
         self.addCopySpec("/etc/libvirt/")
@@ -37,5 +37,6 @@ class abiquo_xen_node(sos.plugintools.PluginBase):
         self.addCopySpec("/etc/xen/")
         
         self.collectExtOutput("virsh capabilities")
+        self.collectExtOutput("virsh list --all")
 
         return
