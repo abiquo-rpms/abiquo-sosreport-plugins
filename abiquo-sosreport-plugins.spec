@@ -3,7 +3,7 @@
 Summary: Abiquo SOSReport plugins
 Name: abiquo-sosreport-plugins
 Version: 1.1
-Release: 1
+Release: 2%{?dist}
 License: BSD 
 Group: System Environment/Base
 URL: http://packages.abiquolabs.com/
@@ -34,6 +34,9 @@ mkdir -p %{buildroot}%{python_sitelib}/sos/plugins
 %{python_sitelib}/sos/plugins/*
 
 %changelog
+* Tue Feb 22 2011 Sergio Rubio <srubio@abiquo.com> - 1.1-2
+- added dist tag to Release
+
 * Tue Feb 22 2011 Sergio Rubio <srubio@abiquo.com> - 1.1-1
 - upstream update
 
